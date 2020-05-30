@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>All Blog</title>
+</head>
+<body>
+	<h1>All Blogs</a></h1>
+
+	{% for blog in blogs %}
+	<a href="{% url 'blog:detail' blog.id %}" target="_blank"><h1>Title: {{ blog.title }}</h1></a>
+	<h1>Date: {{ blog.date }}</h1>
+	{% if blog.image %}
+	<h1>Image: <img src="{{ blog.image.url }}"></h1>
+	{% endif %}
+	<h1>Description: {{ blog.description }}</h1>
+	{% endfor %}
+
+
+
+	<div class="pagination">
+    <span class="step-links">
+        {% if blogs.has_previous %}
+            <a href="?page={{ blogs.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ blogs.number }} of {{ blogs.paginator.num_pages }}
+        </span>
+
+        {% if blogs.has_next %}
+            <a href="?page={{ blogs.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+	</div>
+</body>
+</html>

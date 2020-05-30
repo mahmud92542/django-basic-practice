@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Blog Details</title>
+</head>
+<body>
+	<h1>Get Back to <a href="{% url 'blog:home' %}">Recent Blog</a></h1>
+	<h1>Get Back to <a href="{% url 'blog:all' %}">All Blog</a></h1>
+	<h1>Hello Blog</h1>
+	<h1>Title: {{ blog.title }}</h1>
+	<h1>Date: {{ blog.date }}</h1>
+	{% if blog.image %}
+	<h1>Image: <img src="{{ blog.image.url }}"></h1>
+	{% endif %}
+	<h1>Description: {{ blog.description }}</h1>
+</body>
+</html>
